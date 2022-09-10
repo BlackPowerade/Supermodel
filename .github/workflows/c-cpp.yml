@@ -36,7 +36,5 @@ jobs:
           update: true
           install: git mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-SDL mingw-w64-x86_64-SDL_net
       - name: Find-SDL
-        run: pwd
-        run: cd /msys2
-        run: ls
+        run: cd /msys2 && ls
         
