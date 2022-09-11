@@ -6,23 +6,23 @@ on:
   workflow_dispatch:
     
 
-jobs:
-  build:
-    runs-on: windows-latest
-    defaults:
-      run:
-        shell: msys2 {0}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: msys2/setup-msys2@v2
-        with:
-          msystem: MINGW64
-          update: true
-          install: git mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-SDL mingw-w64-x86_64-SDL_net
-      - name: Find-SDL
-        run: pwd
-      - name: CI-Build
-        run: mingw32-make -f Makefiles/Makefile.Win32 NET_BOARD=1
+# jobs:
+#   build:
+#     runs-on: windows-latest
+#     defaults:
+#       run:
+#         shell: msys2 {0}
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: msys2/setup-msys2@v2
+#         with:
+#           msystem: MINGW64
+#           update: true
+#           install: git mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-SDL mingw-w64-x86_64-SDL_net
+#       - name: Find-SDL
+#         run: pwd
+#       - name: CI-Build
+#         run: mingw32-make -f Makefiles/Makefile.Win32 NET_BOARD=1
   findSDL:
     runs-on: windows-latest
     defaults:
@@ -36,5 +36,5 @@ jobs:
           update: true
           install: git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL mingw64/mingw-w64-x86_64-SDL_net
       - name: Find-SDL
-        run: cd /msys2 && ls
+        run: cd .. && ls
         
