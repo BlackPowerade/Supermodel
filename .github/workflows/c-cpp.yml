@@ -16,27 +16,19 @@ jobs:
       - uses: actions/checkout@v3
       - uses: msys2/setup-msys2@v2
         with:
-          msystem: MINGW64
-          update: true
-          install: git mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_net
-      - name: Find-SDL
-        run: pwd
-      - name: CI-Build
-        run: mingw32-make -f Makefiles/Makefile.Win32 NET_BOARD=1
-  findSDL:
-    runs-on: windows-latest
-    defaults:
-      run:
-        shell: msys2 {0}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: msys2/setup-msys2@v2
-        with:
+          location: C:\
           msystem: MINGW64
           update: true
           install: git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
+      - name: Find-SDL
+        run: pwd
       - name: Find-SDL-include
         run: cd ../.. && ls ./_temp/msys64/mingw64/include && cygpath -w /d/a/_temp
       - name: Find-SDL-libs
         run: cd ../..  && ls ./_temp/msys64/mingw64/lib && cygpath -w /d/a/_temp
+      - name: where
+        run: cd C:\ && ls
+      - name: CI-Build
+        run: mingw32-make -f Makefiles/Makefile.Win32 NET_BOARD=1
+
         
