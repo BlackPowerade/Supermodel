@@ -29,11 +29,16 @@ jobs:
 #           pwd
 #           echo $env:Path
       - name: Find-SDL-include
-        run: cd ../.. && ls ./_temp/msys64/mingw64/include && cygpath -w /d/a/_temp
-      - name: Find-SDL-libs
-        run: cd ../..  && ls ./_temp/msys64/mingw64/lib && cygpath -w /d/a/_temp
-      - name: where
-        run: cd C:\ && ls
+        run: |
+          cd .. && ls
+          cd .. && ls
+          cd .. && ls
+          cd .. && ls
+          ls ./_temp/msys64/mingw64/include 
+#       - name: Find-SDL-libs
+#         run: cd ../..  && ls ./_temp/msys64/mingw64/lib && cygpath -w /d/a/_temp
+#       - name: where
+#         run: cd C:\ && ls
       - name: CI-Build
         run: mingw32-make -f Makefiles/Makefile.Win32 NET_BOARD=1
 
