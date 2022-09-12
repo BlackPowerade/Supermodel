@@ -22,7 +22,7 @@ jobs:
 #           install: git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
       - name: install deps 
         run: ->
-          msys2 -c pacman install -S git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
+          msys2bash.cmd -c pacman install -S git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
           $env:Path += ";C:\msys64\mingw64\bin"
       - name: Find-SDL
         run: ->
