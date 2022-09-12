@@ -14,14 +14,20 @@ jobs:
         shell: msys2 {0}
     steps:
       - uses: actions/checkout@v3
-      - uses: msys2/setup-msys2@v2
-        with:
-          location: C:\
-          msystem: MINGW64
-          update: true
-          install: git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
+#       - uses: msys2/setup-msys2@v2
+#         with:
+#           location: C:\
+#           msystem: MINGW64
+#           update: true
+#           install: git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
+      - name: install deps 
+        run: ->
+          msys2 -c pacman install -S git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
+          $env:Path += ";C:\msys64\mingw64\bin"
       - name: Find-SDL
-        run: pwd
+        run: ->
+          pwd
+          echo $env:Path
       - name: Find-SDL-include
         run: cd ../.. && ls ./_temp/msys64/mingw64/include && cygpath -w /d/a/_temp
       - name: Find-SDL-libs
