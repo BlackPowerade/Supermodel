@@ -27,7 +27,7 @@ jobs:
             mingw64/mingw-w64-x86_64-SDL2_net
 
       - name: Find-SDL-libs
-        run: cd ../../..  && ls ./msys64/mingw64/lib && cygpath -w /d/a/_temp
+        run: cd ../../..  && ls ./msys64/mingw64/lib | grep SDL
       - name: Find-SDL-include
         run: cd ../../.. && ls ./msys64/mingw64/include/SDL2 
       - name: CI-Build
