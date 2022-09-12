@@ -9,25 +9,25 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-#     defaults:
-#       run:
-#         shell: msys2 {0}
+    defaults:
+      run:
+        shell: msys2 {0}
     steps:
       - uses: actions/checkout@v3
-#       - uses: msys2/setup-msys2@v2
-#         with:
-#           location: D:\
-#           msystem: MINGW64
-#           update: false
-#           install: git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
-      - name: install deps 
-        run: |
-          $env:Path += ";C:\msys64\mingw64\bin"
-          msys2 -c pacman install -S git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
-      - name: Find-SDL
-        run: |
-          pwd
-          echo $env:Path
+      - uses: msys2/setup-msys2@v2
+        with:
+          location: 'D:\shit'
+          msystem: MINGW64
+          update: false
+          install: git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
+#       - name: install deps 
+#         run: |
+#           $env:Path += ";C:\msys64\mingw64\bin"
+#           msys2 -c pacman install -S git mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-make mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_net
+#       - name: Find-SDL
+#         run: |
+#           pwd
+#           echo $env:Path
       - name: Find-SDL-include
         run: cd ../.. && ls ./_temp/msys64/mingw64/include && cygpath -w /d/a/_temp
       - name: Find-SDL-libs
