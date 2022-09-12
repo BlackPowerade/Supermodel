@@ -105,7 +105,7 @@ PLATFORM_SRC_FILES = \
 	Src/OSD/Windows/DirectInputSystem.cpp \
 	Src/OSD/Windows/WinOutputs.cpp
 	
-echo | gcc -E -Wp,-v -
+	echo | gcc -E -Wp,-v -
 
 .PHONY: clean
 
