@@ -29,11 +29,11 @@ jobs:
 #           pwd
 #           echo $env:Path
       - name: Find-SDL-include
-        run: |
-          cd .. && ls
-          cd .. && ls
-          cd .. && ls
-          cd D:\shit\ && ls
+        run: cd .. && ls
+      - name: moresdlshit
+        run: cd .. && ls
+      - name: whydoIfuckingbother
+        run: cd .. && ls
 #         ls ./_temp/msys64/mingw64/include 
 #       - name: Find-SDL-libs
 #         run: cd ../..  && ls ./_temp/msys64/mingw64/lib && cygpath -w /d/a/_temp
