@@ -26,6 +26,13 @@
  * Header file for message logging. The OSD code is expected to set up a
  * default logger (CFileLogger).
  */
+#ifndef UNICODE
+ #undef _UNICODE
+#else
+ #ifndef _UNICODE
+  #define _UNICODE
+ #endif
+#endif
 
 #ifndef INCLUDED_LOGGER_H
 #define INCLUDED_LOGGER_H

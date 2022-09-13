@@ -19,13 +19,6 @@
  ** You should have received a copy of the GNU General Public License along
  ** with Supermodel.  If not, see <http://www.gnu.org/licenses/>.
  **/
-#ifndef UNICODE
- #undef _UNICODE
-#else
- #ifndef _UNICODE
-  #define _UNICODE
- #endif
-#endif
 
 #include "OSD/Logger.h"
 #include <set>
