@@ -31,6 +31,6 @@ jobs:
       - name: Find-SDL-include
         run: cd ../../.. && ls ./msys64/mingw64/include/SDL2 
       - name: CI-Build
-        run: mingw32-make -f Makefiles/Makefile.Win32 NET_BOARD=1
+        run: mingw32-make -f Makefiles/Makefile.Win32 NET_BOARD=1 VERBOSE=1
 
         
