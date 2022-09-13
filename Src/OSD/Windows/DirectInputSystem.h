@@ -33,7 +33,11 @@
 #include "Inputs/InputSource.h"
 #include "Inputs/InputSystem.h"
 
+#if _MSC_VER
 #include <SDL.h>
+#else
+#include <SDL2/SDL.h>	
+#endif
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
