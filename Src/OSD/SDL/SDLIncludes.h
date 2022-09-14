@@ -29,12 +29,12 @@
 #ifndef INCLUDED_SDLINCLUDES_H
 #define INCLUDED_SDLINCLUDES_H
 
-#ifdef SUPERMODEL_OSX
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_audio.h>
-#else
+#if _MSC_VER
 #include <SDL.h>
 #include <SDL_audio.h>
+#else
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_audio.h>
 #endif
 
 #ifdef NET_BOARD

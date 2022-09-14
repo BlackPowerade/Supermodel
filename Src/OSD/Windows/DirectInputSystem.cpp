@@ -36,8 +36,13 @@
 #include <wbemidl.h>
 #include <oleauto.h>
 
+#if _MSC_VER
 #include <SDL.h>
 #include <SDL_syswm.h>
+#else
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_syswm.h>
+#endif
 
 /*
  * There seem to be three versions of XInput floating around, all of which
