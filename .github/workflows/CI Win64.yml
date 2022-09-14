@@ -22,11 +22,6 @@ jobs:
           install: make mingw-w64-x86_64-gcc mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_net
           
       - uses: actions/checkout@v3
-
-      - name: Where-am-i
-        run: |
-          pwd
-          tree
       
       - name: Compile
         run: make -f MakeFiles/MakeFile.Win32 -j$($(nproc) + 1)

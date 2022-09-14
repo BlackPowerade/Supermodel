@@ -20,6 +20,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install libsdl2-dev libsdl2-net-dev
 
+      - name: Where-am-i
+        run: |
+          pwd
+          tree
+
       - name: Stage
         run: |
           mkdir -p pkg/NVRAM
