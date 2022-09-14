@@ -35,4 +35,4 @@ jobs:
       - name: Compile
         run: |
           pwd
-          make --makefile=/home/runner/work/Supermodel/Supermodel/MakeFiles/MakeFile.UNIX 
+          make --makefile=/home/runner/work/Supermodel/Supermodel/Makefiles/Makefile.UNIX 
