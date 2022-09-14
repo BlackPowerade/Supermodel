@@ -20,6 +20,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install libsdl2-dev libsdl2-net-dev
 
+
+      - name: Compile
+        run: |
+          pwd
+          make -f Makefiles/Makefile.UNIX -j2
+      
       - name: Stage
         run: |
           mkdir -p pkg/NVRAM
@@ -31,8 +37,3 @@ jobs:
           cp -r Config pkg/Config
           cp Docs/README.txt pkg
           cp Docs/LICENSE.txt pkg
-
-      - name: Compile
-        run: |
-          pwd
-          make --makefile=/home/runner/work/Supermodel/Supermodel/Makefiles/Makefile.UNIX 
