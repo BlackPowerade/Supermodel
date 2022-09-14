@@ -35,5 +35,4 @@ jobs:
       - name: Compile
         run: |
           pwd
-          tree
-          make -f ./MakeFiles/MakeFile.UNIX -j2 VERBOSE=1
+          make --makefile=/home/runner/work/Supermodel/Supermodel/MakeFiles/MakeFile.UNIX 
