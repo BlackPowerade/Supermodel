@@ -12,25 +12,25 @@ permissions:
 jobs:
   CI-Linux:
     runs-on: ubuntu-latest
-      steps: 
-        - uses: actions/checkout@v3
-        
-        - name: Install Dependencies
-          run: |
-            sudo apt-get update
-            sudo apt-get install libsdl2-dev libsdl2-net-dev
+    steps: 
+      - uses: actions/checkout@v3
+      
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install libsdl2-dev libsdl2-net-dev
 
-        - name: Stage
-          run: |
-            mkdir -p pkg/NVRAM
-          mkdir -p pkg/Saves
-          mkdir -p pkg/ROMs
-          echo "NVRAM files go here." > pkg/NVRAM/DIR.txt
-          echo "Save states go here." > pkg/Saves/DIR.txt
-          echo "Recommended \(but not mandatory) location for ROM sets." > pkg/ROMs/DIR.txt
-          cp -r Config pkg/Config
-          cp Docs/README.txt pkg
-          cp Docs/LICENSE.txt pkg
+      - name: Stage
+        run: |
+          mkdir -p pkg/NVRAM
+        mkdir -p pkg/Saves
+        mkdir -p pkg/ROMs
+        echo "NVRAM files go here." > pkg/NVRAM/DIR.txt
+        echo "Save states go here." > pkg/Saves/DIR.txt
+        echo "Recommended \(but not mandatory) location for ROM sets." > pkg/ROMs/DIR.txt
+        cp -r Config pkg/Config
+        cp Docs/README.txt pkg
+        cp Docs/LICENSE.txt pkg
 
-        - name: Compile
-          run: make -f MakeFiles/MakeFile.UNIX -j$(($nproc) + 1)
+      - name: Compile
+        run: make -f MakeFiles/MakeFile.UNIX -j$(($nproc) + 1)
