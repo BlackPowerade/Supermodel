@@ -2,29 +2,29 @@ name: CI-Linux
 
 on:
   workflow_dispatch:
-  # push:
-  #  branches:
-  #   - master
+  push:
+   branches:
+    - master
       
 permissions:
   contents: read
   
 jobs:
   CI-Linux:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps: 
       - uses: actions/checkout@v3
       
       - name: Install Dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install libsdl2-dev libsdl2-net-dev
+          brew update
+          brew install sdl2 sdl2_net
 
 
       - name: Compile
         run: |
           pwd
-          make -f Makefiles/Makefile.UNIX -j2
+          make -f Makefiles/Makefile.OSX -j3
       
       - name: Stage
         run: |
