@@ -10,25 +10,53 @@ permissions:
   contents: read
   
 jobs:
-  CI-Win64:
-    runs-on: windows-latest
-    defaults:
-      run:
-        shell: msys2 {0}
+  # CI-Win64:
+  #   runs-on: windows-latest
+  #   defaults:
+  #     run:
+  #       shell: msys2 {0}
    
-    steps:
-      - uses: msys2/setup-msys2@v2
-        with:
-          install: make mingw-w64-x86_64-gcc mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_net
+  #   steps:
+  #     - uses: msys2/setup-msys2@v2
+  #       with:
+  #         install: make mingw-w64-x86_64-gcc mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_net
           
-      - uses: actions/checkout@v3
+  #     - uses: actions/checkout@v3
       
-      - name: Compile
-        run: make -f MakeFiles/MakeFile.Win32 -j2
+  #     - name: Compile
+  #       run: make -f MakeFiles/MakeFile.Win32 -j$(($nproc) + 1)
           
-      - name: Stage
-        run: |
-          mkdir -p pkg/NVRAM
+  #     - name: Stage
+  #       run: |
+  #         mkdir -p pkg/NVRAM
+  #         mkdir -p pkg/Saves
+  #         mkdir -p pkg/ROMs
+  #         echo "NVRAM files go here." > pkg/NVRAM/DIR.txt
+  #         echo "Save states go here." > pkg/Saves/DIR.txt
+  #         echo "Recommended \(but not mandatory) location for ROM sets." > pkg/ROMs/DIR.txt
+  #         cp -r Config pkg/Config
+  #         cp Docs/README.txt pkg
+  #         cp Docs/LICENSE.txt pkg
+  #         cp bin64/supermodel.exe pkg/Supermodel.exe
+
+  #     - uses: actions/upload-artifact@v3
+  #       with:
+  #         name: Supermodel
+  #         path: pkg/
+
+  CI-Linux:
+    runs-on: ubuntu-latest
+      steps: 
+        - uses: actions/checkout@v3
+        
+        - name: Install Dependencies
+          run: |
+            sudo apt-get update
+            sudo apt-get install libsdl2-dev libsdl2-net-dev
+
+        - name: Stage
+          run: |
+            mkdir -p pkg/NVRAM
           mkdir -p pkg/Saves
           mkdir -p pkg/ROMs
           echo "NVRAM files go here." > pkg/NVRAM/DIR.txt
@@ -37,9 +65,6 @@ jobs:
           cp -r Config pkg/Config
           cp Docs/README.txt pkg
           cp Docs/LICENSE.txt pkg
-          cp bin64/supermodel.exe pkg/Supermodel.exe
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Supermodel
-          path: pkg/
+        - name: Compile
+          run: make -f MakeFiles/MakeFile.UNIX -j$(($nproc) + 1)
