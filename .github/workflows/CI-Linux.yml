@@ -23,14 +23,14 @@ jobs:
       - name: Stage
         run: |
           mkdir -p pkg/NVRAM
-        mkdir -p pkg/Saves
-        mkdir -p pkg/ROMs
-        echo "NVRAM files go here." > pkg/NVRAM/DIR.txt
-        echo "Save states go here." > pkg/Saves/DIR.txt
-        echo "Recommended \(but not mandatory) location for ROM sets." > pkg/ROMs/DIR.txt
-        cp -r Config pkg/Config
-        cp Docs/README.txt pkg
-        cp Docs/LICENSE.txt pkg
+          mkdir -p pkg/Saves
+          mkdir -p pkg/ROMs
+          echo "NVRAM files go here." > pkg/NVRAM/DIR.txt
+          echo "Save states go here." > pkg/Saves/DIR.txt
+          echo "Recommended \(but not mandatory) location for ROM sets." > pkg/ROMs/DIR.txt
+          cp -r Config pkg/Config
+          cp Docs/README.txt pkg
+          cp Docs/LICENSE.txt pkg
 
       - name: Compile
         run: make -f MakeFiles/MakeFile.UNIX -j$(($nproc) + 1)
