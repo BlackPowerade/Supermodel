@@ -36,4 +36,4 @@ jobs:
         run: |
           pwd
           tree
-          make -f ./MakeFiles/MakeFile.UNIX -j2
+          make -f ./MakeFiles/MakeFile.UNIX -j2 VERBOSE=1
