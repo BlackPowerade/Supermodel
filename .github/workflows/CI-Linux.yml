@@ -33,4 +33,4 @@ jobs:
           cp Docs/LICENSE.txt pkg
 
       - name: Compile
-        run: make -f MakeFiles/MakeFile.UNIX -j$(($nproc) + 1)
+        run: make -f /home/runner/work/Supermodel/Supermodel/MakeFiles/MakeFile.UNIX -j$($(nproc) + 1)
