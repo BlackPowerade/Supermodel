@@ -36,4 +36,4 @@ jobs:
         run: |
           pwd
           tree
-          make -f /home/runner/work/Supermodel/Supermodel/MakeFiles/MakeFile.UNIX -j$($(nproc) + 1)
+          make -f ./MakeFiles/MakeFile.UNIX -j2
