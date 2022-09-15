@@ -70,7 +70,7 @@ endif
 #
 ARCH =
 OPT = -O3
-WARN = -Wall
+WARN = -Wall -Wno-error=implicit-function-declaration
 CSTD = -std=iso9899:2011
 CXXSTD = -std=c++17
 
