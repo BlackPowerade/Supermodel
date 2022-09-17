@@ -20,6 +20,11 @@ jobs:
           brew update
           brew install sdl2 sdl2_net
 
+      - name: Check dependencies
+        run: |
+          sdl2-config --cflags
+          sdl2-config --libs
+
 
       - name: Compile
         run: |
