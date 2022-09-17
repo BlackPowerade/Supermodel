@@ -55,7 +55,10 @@ LD = clang
 # SDL
 #
 
-SDL_CFLAGS =
+SDL2_CFLAGS = `sdl2-config --cflags`
+SDL2_LIBS = `sdl2-config --libs`
+
+SDL_CFLAGS = 
 SDL_LIBS = -framework SDL2 -framework AGL -framework OpenGL -framework GLUT -framework Cocoa
 ifeq ($(strip $(NET_BOARD)),1)
 	SDL_LIBS += -framework SDL2_net
@@ -65,8 +68,8 @@ endif
 #	OSX-specific
 #
 
-PLATFORM_CXXFLAGS = $(SDL_CFLAGS) -DSUPERMODEL_OSX -F/Library/Frameworks/ -O3 -Wno-implicit-function-declaration
-PLATFORM_LDFLAGS = $(SDL_LIBS) -lz -lm -lstdc++ -F/Library/Frameworks/ -v
+PLATFORM_CXXFLAGS = $(SDL_CFLAGS) $(SDL2_CFLAGS) -DSUPERMODEL_OSX -F/Library/Frameworks/ -O3 -Wno-implicit-function-declaration
+PLATFORM_LDFLAGS = $(SDL_LIBS) $(SDL2_LIBS) -lz -lm -lstdc++ -F/Library/Frameworks/ -v
 
 
 ###############################################################################
